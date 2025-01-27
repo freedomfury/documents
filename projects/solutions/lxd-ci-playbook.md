@@ -1,10 +1,21 @@
 # LXD cloud-init Ansible playbook
 The playbook example bootstraps and initial Nginx web server for demonstration purposes. The example is purposely kept minimal to be used as a starting base for a more complicated setup.
 
+> Full source code can be found here [main.yml](lxd-ci-playbook.yml).
 
+Our project layout contains a simple Ansible structure. The list's most noteworthy files are the secrets file and the project's main entry point. The vault file refers to the Ansible vault's built-in encryption mechanism. The file names are arbitrary and can be adjusted to make sense of your situation. The rest of this document details the functionality inside the `main.yml` file at the root of our project.
+```
+├── files
+│   ├── index.html
+│   └── nginx.conf
+├── group_vars
+│   └── all
+│       ├── main.yml
+│       └── vault.yml      <-  ansible vault encrypted, secrets file
+└── main.yml               <-  project main entry point playbook
 
-> Full source code can be found [here](lxd-ci-playbook.yml).
-
+3 directories, 5 files
+```
 The default default unable host is set to all, matching any host in the inventory. Gathering facts set to `false` in our case, we do not use Ansible generated facts, and it slows down the execution process considerably. If Ansible facts are necessary, the `gather_subset` filters should be utilized to isolate the variables to be populated.
 ```
 - name: "Example Nginx Web Server"

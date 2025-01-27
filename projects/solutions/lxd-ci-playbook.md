@@ -3,7 +3,7 @@ The playbook example bootstraps and initial Nginx web server for demonstration p
 
 > Full source code can be found here [main.yml](lxd-ci-playbook.yml).
 
-Our project layout contains a simple Ansible structure. The list's most noteworthy files are the secrets file and the project's main entry point. The vault file refers to the Ansible vault's built-in encryption mechanism. The file names are arbitrary and can be adjusted to make sense of your situation. The rest of this document details the functionality inside the `main.yml` file at the root of our project.
+Our project layout features a straightforward Ansible structure. The two most significant files are the main entry point playbook and the vault file. The vault file utilizes Ansible vault's built-in encryption mechanism. The file names are flexible and can be modified to fit your needs. The remainder of this document elaborates on the functionality within the `main.yml` file located at the root of our project.
 ```
 ├── files
 │   ├── index.html
@@ -16,6 +16,8 @@ Our project layout contains a simple Ansible structure. The list's most notewort
 
 3 directories, 5 files
 ```
+
+
 The default default unable host is set to all, matching any host in the inventory. Gathering facts set to `false` in our case, we do not use Ansible generated facts, and it slows down the execution process considerably. If Ansible facts are necessary, the `gather_subset` filters should be utilized to isolate the variables to be populated.
 ```
 - name: "Example Nginx Web Server"

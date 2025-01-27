@@ -1,5 +1,7 @@
 # LXD cloud-init Ansible playbook
-The playbook example bootstraps and initial Nginx web server for demonstration purposes. The example is purposely kept minimal so it can be used as a starting base.
+The playbook example bootstraps and initial Nginx web server for demonstration purposes. The example is purposely kept minimal to be used as a starting base for a more complicated setup.
+
+
 
 > Full source code can be found [here](lxd-ci-playbook.yml).
 

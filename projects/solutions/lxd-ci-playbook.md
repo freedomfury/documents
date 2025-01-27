@@ -16,7 +16,9 @@ Our project layout features a straightforward Ansible structure. The two most si
 
 3 directories, 5 files
 ```
+More detailed documentation for Ansible Vault can be found on the vendor's website.
 
+---
 
 The default default unable host is set to all, matching any host in the inventory. Gathering facts set to `false` in our case, we do not use Ansible generated facts, and it slows down the execution process considerably. If Ansible facts are necessary, the `gather_subset` filters should be utilized to isolate the variables to be populated.
 ```

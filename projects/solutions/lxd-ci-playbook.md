@@ -1,13 +1,16 @@
 # LXD cloud-init Ansible playbook
-The playbook example bootstraps and initial Nginx web server for demonstration purposes.
+The playbook example bootstraps and initial Nginx web server for demonstration purposes. The example is purposely kept minimal so it can be used as a starting base.
 
-```yaml {.line-numbers}
+> Full source code can be found [here](lxd-ci-playbook.yml).
 
----
+The default default unable host is set to all, matching any host in the inventory. Gathering facts set to `false` in our case, we do not use Ansible generated facts, and it slows down the execution process considerably. If Ansible facts are necessary, the `gather_subset` filters should be utilized to isolate the variables to be populated.
+```
 - name: "Example Nginx Web Server"
   hosts: all
-  become: true
   gather_facts: false
+```
+Run some initial miscellaneous setup tasks. This part of the example is somewhat contrived effectively. I want to show the use of a vaulted password variable, which would need the secret file to decrypt.
+ ```
   tasks:
     # Misc prerequisites tasks ...
     - name: "Main | Output debug message"
@@ -24,8 +27,10 @@ The playbook example bootstraps and initial Nginx web server for demonstration p
       ansible.builtin.package:
         name: [which, tree]
         state: present
-
-    # Install and configure nginx web server ...
+```
+Next, we will install, configure, and start the web server processes. Basic web server configuration, nothing fancy.
+```
+ # Install and configure nginx web server ...
     - name: "Main | install nginx web server"
       ansible.builtin.package:
         name: nginx
@@ -52,12 +57,16 @@ The playbook example bootstraps and initial Nginx web server for demonstration p
         name: nginx
         state: started
         enabled: true
-
+```
+Clean up our secrets folder since they will no longer be needed, as this is a one-time bootstrap process. This step is important since we don't wanna leave these temporary sensitive files on the operating system.
+```
     - name: "Main | Delete secrets folder"
       ansible.builtin.file:
         path: "/root/.sec"
         state: absent
-
+```
+Lastly, we run some validation to ensure the web server functions as expected. Testing as part of the playbook allows us to validate the bootstrap process in a single cloud-init. 
+```
     # Test web server was setup correctly ...
     - name: "Main | check if port 80 is open"
       ansible.builtin.wait_for:
@@ -78,3 +87,10 @@ The playbook example bootstraps and initial Nginx web server for demonstration p
         that:
           - "'Hello, Nginx!' in webserver_content.content"
 ```
+The command below demonstrates querying cloud-init status while waiting for completion.
+```
+inc exec ct-ubun00-dev -- cloud-init status --wait
+...............................................status: done
+```
+You will be presented with a progress bar and the run's final status.
+

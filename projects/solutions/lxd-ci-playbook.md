@@ -87,7 +87,7 @@ Lastly, we run some validation to ensure the web server functions as expected. T
         that:
           - "'Hello, Nginx!' in webserver_content.content"
 ```
-The command below demonstrates querying cloud-init status while waiting for completion.
+The command below demonstrates querying cloud-init status while waiting for completion from the hypervisor.
 ```
 inc exec ct-ubun00-dev -- cloud-init status --wait
 ...............................................status: done

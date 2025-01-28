@@ -4,7 +4,7 @@ Using cloud-init to set authentication credentials is relatively straightforward
 
 This example assumes that you have a working LXD instance configured with the default settings. Setting up LXD or Incus is relatively simple. Please take a look at the respective authors for instructions on installation. We will create a system administration user that will consume the credentials later. It is important to ensure the files created are only readable by the owner.
 
-1. Create an SSH key pair.
+1. Create an SSH key pair. This key will be used to set up access to your git repository. 
    ```
    ssh-keygen -b 2048 -t rsa -f id_rsa -q -N ""
    ```
@@ -16,7 +16,7 @@ This example assumes that you have a working LXD instance configured with the de
 *In most scenarios, you should set your deployment key to read-only access.*
    
 
-1. Generate a cloud-config snippet and store it as the user data value in the LXD profile.
+1. Generate a cloud-config snippet and store it as the user data value in the LXD profile. Remember that the user profiles in LXD are `yaml` based and cloud-config settings. The user-data section of the profile is a multiline literal string that begins with the cloud-init comment(s) stanza.
    ```
    cat <<EOF > profile-ci.yml
    > config:

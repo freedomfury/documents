@@ -1,9 +1,9 @@
 # LXD cloud-init Ansible playbook
-The playbook example bootstraps and initial Nginx web server for demonstration purposes. The example is purposely kept minimal to be used as a starting base for a more complicated setup.
+The playbook example initializes an Nginx web server for demonstration purposes. It is intentionally kept minimal to serve as a starting point for a more complex setup.
 
 > Full source code can be found here [main.yml](lxd-ci-playbook.yml).
 
-Our project layout features a straightforward Ansible structure. The two most significant files are the main entry point playbook and the vault file. The vault file utilizes Ansible vault's built-in encryption mechanism. The file names are flexible and can be modified to fit your needs. The remainder of this document elaborates on the functionality within the `main.yml` file located at the root of our project.
+Our project layout features a straightforward Ansible structure. The two most significant files are the main entry point playbook and the vault file. The vault file utilizes Ansible Vault's built-in encryption mechanism. The file names are flexible and can be modified to fit your needs. The remainder of this document elaborates on the functionality within the `main.yml` file located at the root of our project.
 ```
 ├── files
 │   ├── index.html

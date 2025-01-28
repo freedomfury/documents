@@ -146,3 +146,4 @@ This example assumes that you have a working LXD instance configured with the de
    ```
    rm -f id_rsa*  profile-ci.yml
    ```
+With the above configuration in place, every new instance launched will trigger cloud-init to have Ansible pull the configurations from Git Hub. With a bit more tweaking, you could pass a variable to specify an Ansible group. This group variable would allow for the on-the-fly configuration of varying systems in different roles. 

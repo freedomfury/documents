@@ -91,7 +91,7 @@ This example assumes that you have a working LXD instance configured with the de
     +----------+---------------------------------------+---------+
    ```
 
-1. Launch an instance using the newly created profile.
+1. Launch an instance using the newly created profile. In this case, I'm using the prebuilt containers from LXD's image server. The vendor created these pre-configured images, which have no personalized customizations. 
    ```
    inc launch images:ubuntu/noble/cloud ct-ubun00-dev -p base-sec
 
@@ -107,7 +107,7 @@ This example assumes that you have a working LXD instance configured with the de
    inc exec ct-ubun00-dev -- cloud-init status --wait
     status: done
    ```
-   1. If you encounter any errors, you will want to log into the instance and check the cloud-init logs. In some cases, the error message can be quite useful and help troubleshoot your issue.
+   1. If you encounter any errors, you will want to log into the instance and check the cloud-init logs. Sometimes, the error message can be useful and help troubleshoot your issue.
       ```
       inc shell ct-ubun00-dev
       root@ct-ubun00-dev:~# whoami

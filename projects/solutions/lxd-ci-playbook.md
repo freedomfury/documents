@@ -26,7 +26,7 @@ The default default unable host is set to all, matching any host in the inventor
   hosts: all
   gather_facts: false
 ```
-Run some initial miscellaneous setup tasks. This part of the example is somewhat contrived effectively. I want to show the use of a vaulted password variable, which would need the secret file to decrypt.
+Perform some initial miscellaneous setup tasks. This section of the example seems a bit contrived. Essentially, I want to demonstrate the use of a vaulted password variable, which requires the secret file to decrypt.
  ```
   tasks:
     # Misc prerequisites tasks ...

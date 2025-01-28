@@ -147,5 +147,7 @@ This example assumes that you have a working LXD instance configured with the de
    rm -f id_rsa*  profile-ci.yml
    ```
 
-With the above configuration in place, every new instance launched will trigger cloud-init to have Ansible pull the configurations from GitHub. With a little more tweaking, you could pass a variable to specify an Ansible group. This group variable would enable on-the-fly configuration of different systems in various roles. You can create databases, web servers, or any other server roles you might need from the same base profile. The only drawback is that the servers won't be instantly available, and there will be a significant delay from boot time to when the server is ready. The duration of the delay will depend on the complexity or intensity of the post-setup configuration.
+With the above configuration in place, every new instance launched will trigger cloud-init to have Ansible pull the configurations from GitHub. With a little more tweaking, you could pass a variable to specify an Ansible group. This group variable would enable on-the-fly configuration of different systems in various roles. You can create databases, web servers, or any other server roles you might need from the same base profile.  
+
+The only drawback is that the servers won't be instantly available, and there will be a significant delay from boot time to when the server is ready. The duration of the delay will depend on the complexity or intensity of the post-setup configuration.
 

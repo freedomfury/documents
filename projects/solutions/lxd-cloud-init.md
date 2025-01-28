@@ -2,7 +2,7 @@
 
 Using cloud-init to set authentication credentials is relatively straightforward. The LXD hypervisor allows us to set profiles that store configuration and metadata about an instance. Cloud-init also enables you to insert arbitrary files. This functionality lets us insert the `password zero` secret to bootstrap the instance. This solution is compatible with most public clouds, making it familiar to anyone with cloud-init experience.
 
-This example assumes that you have a working LXD instance configured with the default settings. Setting up LXD or Incus is relatively simple. Please see the respective authors for instructions on installation. We will create a system administration user that will consume the credentials later. It is important to ensure the files created are only readable by the owner.
+This example assumes that you have a working LXD instance configured with the default settings. Setting up LXD or Incus is relatively simple. Please take a look at the respective authors for instructions on installation. We will create a system administration user that will consume the credentials later. It is important to ensure the files created are only readable by the owner.
 
 1. Create an SSH key pair.
    ```
@@ -50,7 +50,7 @@ This example assumes that you have a working LXD instance configured with the de
              MWNrQndhQzFzZUdSek1ERXRjM1JuQVFJREJBVUcKLS0tLS1FTkQgT1BFTlNTSCBQUklWQVRFIEtF
              WS0tLS0tCg==
          - path: /home/sysadm/.sec/pw_vault
-           owner: sysadm:sysadm
+           owner: sysadm:sysadmin
            permissions: "0600"
            defer: true
            content: <<NOT_A_PASSWORD>>
@@ -77,7 +77,7 @@ This example assumes that you have a working LXD instance configured with the de
    project: default
     > EOF
    ```
-   The example playbook can be found [here](./lxd-ci-playbook.md). The playbook showcases several sample commands to verify that cloud-init was executed correctly. You would naturally adjust the content of the playbook to meet your specific needs.
+   The example playbook can be found [here](./lxd-ci-playbook.md). The playbook presents various sample commands to ensure that cloud-init was executed correctly. You would naturally modify the playbook's content to suit your specific needs.
    
 1. Set up LXD profile to be used at instance launch time.
    ```
@@ -146,4 +146,6 @@ This example assumes that you have a working LXD instance configured with the de
    ```
    rm -f id_rsa*  profile-ci.yml
    ```
-With the above configuration in place, every new instance launched will trigger cloud-init to have Ansible pull the configurations from Git Hub. With a bit more tweaking, you could pass a variable to specify an Ansible group. This group variable would allow for the on-the-fly configuration of varying systems in different roles. 
+
+With the above configuration in place, every new instance launched will trigger cloud-init to have Ansible pull the configurations from GitHub. With a little more tweaking, you could pass a variable to specify an Ansible group. This group variable would enable on-the-fly configuration of different systems in various roles. You can create databases, web servers, or any other server roles you might need from the same base profile. The only drawback is that the servers won't be instantly available, and there will be a significant delay from boot time to when the server is ready. The duration of the delay will depend on the complexity or intensity of the post-setup configuration.
+

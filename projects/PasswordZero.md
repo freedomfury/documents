@@ -51,7 +51,7 @@ Effectively, this allows us to inject secrets using cloud-init and, then, with a
 ## Review 
 
 ### cloud-init ansible-pull
-After reviewing the solution presented with Cloud-init and LXD, we found that it easily meets our requirements. The solution allows us to use a generic cloud image without needing a custom image. Cloud-init injects the secrets very early in the boot process. Now, we can utilize these credentials to pull our Ansible repository using the private key as an authentication method. Further, the vault password file can decrypt the secrets stored with the source code.
+After reviewing the solution presented with Cloud-init and LXD, we found that it easily meets our requirements. The solution enables us to use a generic cloud image without needing a custom image. Cloud-init injects the secrets very early in the boot process. Now, we can utilize these credentials to pull our Ansible repository using the private key as an authentication method. The vault password file can also decrypt the secrets stored in the source code.
 
 Although this solution might be viable for a single tenant storing secrets in plain text on the OS file system or in the LXD database, it's probably not desirable. However, to access the LXD profile, one would have certain entitlements. Similarly, to access a file on an operating system owned by the root, you must have elevated privileges. The solution is a `quick` example of integrating cloud-init with an ansible-pull for quick post-up configurations on an instance.
 

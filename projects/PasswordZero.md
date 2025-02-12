@@ -65,5 +65,5 @@ A couple of things to remember are that you want to ensure the SSH key you're us
 #### Cons
 * Plain text passwords stored in the database.
 * Delay in server readiness, not instant on.
-* requires Ansible to be installed locally.
+* Requires Ansible to be installed locally.
 

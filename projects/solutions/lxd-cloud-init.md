@@ -115,7 +115,7 @@ This example assumes that you have a working LXD instance configured with the de
       ```
       > LXD has a predefined alias `shell` that allows users to attach to the running instance as root.
 
-   1. Cloud logging is very verbose intentionally. You'll most likely search for Python stack traces in the logs.         
+   1. Cloud logging is intentionally very verbose. You'll most likely search the logs for Python stack traces.         
       ```
       # /var/log/cloud-init.log
       

@@ -2,7 +2,7 @@
 
 When spinning up a compute node, the instance must have some access to an initial secret or privilege to unlock resources and data. This document refers to the initial secret as password zero. It solves a problem that might be trivial in the public cloud space, like AWS, using instance profiles with IAM roles.  Instant profiles allow birthright privileges. As such, an instance could access the AWS secret manager or HashiCorp Vault.
 
-For our use case, we are using the LXD/Incus hypervisor. Since the hypervisor lacks this functionality, we must develop a custom solution to address this problem. As with everything else in this documentation, we aim to solve it using the simplest approach. However, in some circumstances, complexity is unavoidable.
+For our use case, we are using the LXD/Incus hypervisor. Since the hypervisor lacks built-in secret management functionality, we must develop a custom solution to address this problem. As with everything else in this documentation, we aim to solve it using the simplest approach. However, in some circumstances, complexity is unavoidable.
 
 ## Use case
 In our scenario, we want to customize the workload using cloud-based generic images and Ansible at launch time. Fortunately, the Incus hypervisor offers a wide variety of images. We will use the Ubuntu operating system for this example, but most modern operating systems function similarly.  

@@ -1,3 +1,41 @@
+# Overview
+
+This document outlines a technical evaluation comparing the Apple Mac Mini M4 and the Nimo Strix Halo in automating GNU Bash lifecycles and modifying LLM context windows. It provides a detailed performance analysis of prompt processing and token generation speeds across both hardware configurations.
+
+**Summary: Ollama Model Context Window Modification**
+
+To permanently adjust a model's context window in [Ollama](https://ollama.com/), you must create a custom version using a **Modelfile**.
+
+### **Steps for Permanent Context Modification**
+
+1.  **Identify the Base Model:** Ensure the model you wish to modify (e.g., `llama3.1`) is downloaded using `ollama pull llama3.1`.
+2.  **Create a Modelfile:** Create a plain text file named `Modelfile` (no extension) and specify the base model and the desired context size:
+    ``` dockerfile
+    FROM llama3.1
+    PARAMETER num_ctx 65536
+    
+    ```
+      * `FROM`: The base model.
+      * `PARAMETER num_ctx`: The context window size (e.g., `65536` for 64k).
+3.  **Build the New Model:** Use the `create` command in your terminal to build the custom model, giving it a new name:
+    ``` bash
+    ollama create llama3.1-64k -f Modelfile
+    
+    ```
+4.  **Run Your Custom Model:** Run the new model version, which will use the modified context window by default:
+    ``` bash
+    ollama run llama3.1-64k
+    
+    ```
+
+### **Important Considerations**
+
+  * **VRAM Usage:** Increasing the context window drastically increases GPU memory consumption. A 64k context for an 8B model requires a recommendation of 12GB+ of VRAM.
+  * **Verification:** You can confirm the settings by typing `/show parameters` inside the Ollama interactive chat after the model is running.
+
+For more detailed information on parameters, refer to the [Ollama Modelfile Reference](https://www.google.com/search?q=https://github.com/ollama/ollama/blob/main/docs/modelfile.md).
+
+
 ## Specification Document: Bash Automation & Compilation Script
 
 **Role:** Expert Python Systems Engineer & SDET

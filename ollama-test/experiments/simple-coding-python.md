@@ -2,7 +2,7 @@
 
 This document outlines a technical evaluation comparing the Apple Mac Mini M4 and the Nimo Strix Halo in automating GNU Bash lifecycles and modifying LLM context windows. It provides a detailed performance analysis of prompt processing and token generation speeds across both hardware configurations.
 
-**Summary: Ollama Model Context Window Modification**
+**Ollama Model Context Window Modification**
 
 To permanently adjust a model's context window in [Ollama](https://ollama.com/), you must create a custom version using a **Modelfile**.
 

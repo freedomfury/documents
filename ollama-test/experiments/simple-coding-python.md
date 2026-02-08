@@ -11,7 +11,7 @@ To permanently adjust a model's context window in [Ollama](https://ollama.com/),
 1.  **Identify the Base Model:** Ensure the model you wish to modify (e.g., `llama3.1`) is downloaded using `ollama pull llama3.1`.
 2.  **Create a Modelfile:** Create a plain text file named `Modelfile` (no extension) and specify the base model and the desired context size:
     ``` dockerfile
-    FROM llama3.1
+    FROM qwen3-coder:30b
     PARAMETER num_ctx 65536
     
     ```
@@ -19,12 +19,12 @@ To permanently adjust a model's context window in [Ollama](https://ollama.com/),
       * `PARAMETER num_ctx`: The context window size (e.g., `65536` for 64k).
 3.  **Build the New Model:** Use the `create` command in your terminal to build the custom model, giving it a new name:
     ``` bash
-    ollama create llama3.1-64k -f Modelfile
+    ollama create qwen3-coder-64k:30b -f Modelfile
     
     ```
 4.  **Run Your Custom Model:** Run the new model version, which will use the modified context window by default:
     ``` bash
-    ollama run llama3.1-64k
+    ollama run qwen3-coder-64k:30b
     
     ```
 

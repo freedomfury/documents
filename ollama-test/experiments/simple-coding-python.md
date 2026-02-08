@@ -8,7 +8,7 @@ To permanently adjust a model's context window in [Ollama](https://ollama.com/),
 
 ### **Steps for Permanent Context Modification**
 
-1.  **Identify the Base Model:** Ensure the model you wish to modify (e.g., `llama3.1`) is downloaded using `ollama pull llama3.1`.
+1.  **Identify the Base Model:** Ensure the model you wish to modify (e.g., `qwen3-coder:30b`) is downloaded using `ollama pull qwen3-coder:30b`.
 2.  **Create a Modelfile:** Create a plain text file named `Modelfile` (no extension) and specify the base model and the desired context size:
     ``` dockerfile
     FROM qwen3-coder:30b

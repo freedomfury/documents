@@ -8,6 +8,8 @@ The full-time job keeps me anchored to whatever's in front of me there. Anything
 
 Some of what's here:
 
+- **[satellite-poc](https://github.com/freedomfury/satellite-poc)** — A reproducible Red Hat Satellite 6.19 lab on libvirt/KVM: one Satellite, an external PostgreSQL, two Capsules behind an HAProxy VIP, and three clients that register and pull content through that VIP. The deliverable is a server-by-server runbook for customer engineers, while the scripts act as a staged test harness that validates each documented step in order from a clean slate.
+
 - **[merg](https://github.com/freedomfury/merg)** — Pythonic deep merging of dicts and lists for configuration data, with strict JSON/YAML-shaped type validation. Inspired by Ruby's `deep_merge` gem, the engine behind Puppet's Hiera. Includes knockout prefix semantics. Published to PyPI: `pip install merg`.
 
 - **[shopts](https://github.com/freedomfury/shopts)** — A modern, schema-driven alternative to `getopts` for Bash, written in Go. Declare options once (flags, types, defaults, validation rules, named built-in validators for things like email/semver/IPv4/CIDR) and `shopts` handles parsing, type checking, help text, and shell-safe output. Hundreds of tests across Go and Bash, benchmarks against a hand-rolled Bash reference parser, build-once-promote release workflow. Distinct exit codes for schema errors vs. bad args. No `eval`, no subshells, no dependencies.
